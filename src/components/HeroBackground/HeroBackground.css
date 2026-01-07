@@ -1,0 +1,143 @@
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  display: block;
+}
+
+.hero-bg__spot {
+  position: absolute;
+  width: clamp(480px, 56vw, 1000px);
+  height: clamp(480px, 56vw, 1000px);
+  border-radius: 50%;
+  filter: blur(56px);
+  opacity: 0.95;
+  will-change: transform, opacity, filter;
+  pointer-events: none;
+}
+
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image: url("/src/assets/wallpaper.svg");
+  background-repeat: repeat;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+}
+
+.hero-bg__spot--left {
+  left: -30%;
+  top: -50%;
+  background: radial-gradient(
+    circle at 100% 100%,
+    rgba(255, 205, 112, 0.98),
+    rgba(255, 131, 65, 0.75) 100%,
+    rgba(255, 77, 37, 0.2) 55%
+  );
+  animation: spotlightLeft 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-bg__spot--right {
+  right: -30%;
+  bottom: -50%;
+  background: radial-gradient(
+    circle at 100% 100%,
+    rgba(76, 175, 255, 0.98),
+    rgba(115, 139, 250, 0.75) 100%,
+    rgba(104, 119, 255, 0.2) 55%
+  );
+  animation: spotlightRight 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes spotlightLeft {
+  0% {
+    transform: translate3d(-30vw, 0, 0) scale(0.9);
+  }
+  20% {
+    transform: translate3d(-10vw, -8vh, 0) scale(1.02);
+  }
+  45% {
+    transform: translate3d(95vw, -14vh, 0) scale(1.12);
+  }
+  70% {
+    transform: translate3d(40vw, -6vh, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-30vw, 0, 0) scale(0.9);
+  }
+}
+
+@keyframes spotlightRight {
+  0% {
+    transform: translate3d(30vw, 0, 0) scale(0.9);
+  }
+  20% {
+    transform: translate3d(10vw, 8vh, 0) scale(1.02);
+  }
+  45% {
+    transform: translate3d(-95vw, 14vh, 0) scale(1.12);
+  }
+  70% {
+    transform: translate3d(-40vw, 6vh, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(30vw, 0, 0) scale(0.9);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-bg__spot--left {
+    animation-name: spotlightLeftMobile;
+    animation-duration: 6s;
+    top: -10%;
+  }
+
+  .hero-bg__spot--right {
+    animation-name: spotlightRightMobile;
+    animation-duration: 6s;
+    bottom: -10%;
+  }
+}
+
+@keyframes spotlightLeftMobile {
+  0% {
+    transform: translate3d(-40%, 0, 0) scale(0.9);
+  }
+  20% {
+    transform: translate3d(10%, -5vh, 0) scale(1.02);
+  }
+  45% {
+    transform: translate3d(170%, -10vh, 0) scale(1.1);
+  }
+  70% {
+    transform: translate3d(20%, -4vh, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(-40%, 0, 0) scale(0.9);
+  }
+}
+
+@keyframes spotlightRightMobile {
+  0% {
+    transform: translate3d(40%, 0, 0) scale(0.9);
+  }
+  20% {
+    transform: translate3d(-10%, 5vh, 0) scale(1.02);
+  }
+  45% {
+    transform: translate3d(-170%, 10vh, 0) scale(1.1);
+  }
+  70% {
+    transform: translate3d(-20%, 4vh, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(40%, 0, 0) scale(0.9);
+  }
+}

@@ -1,0 +1,62 @@
+.curtain--no-scroll {
+  overflow: hidden;
+}
+
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: all;
+
+  transform: translateY(0%);
+  will-change: transform;
+
+  background-repeat: repeat;
+  background-size: 180px 180px;
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.curtain--back {
+  z-index: 9998;
+
+  background-image: url("./veil-texture.svg"),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96) 0%,
+      rgba(236, 228, 245, 0.97) 45%,
+      rgba(210, 200, 230, 0.95) 100%
+    );
+
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.curtain--front {
+  background-image: url("./veil-texture.svg"),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.98) 0%,
+      rgba(246, 238, 250, 0.98) 50%,
+      rgba(225, 215, 240, 0.96) 100%
+    );
+
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 768px) {
+  .curtain {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .curtain {
+    background-size: 220px 220px;
+  }
+
+  .curtain--back {
+    box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.1);
+  }
+}
