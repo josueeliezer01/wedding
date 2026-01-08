@@ -1,3 +1,13 @@
+:root {
+  --color-primary: #8e5b50;
+  --color-secondary: #d8a48f;
+  --color-text-main: #4a3b32;
+  --color-text-light: #8c7b70;
+  --color-accent: #d4af37;
+  --font-serif: "Rouge Script", cursive;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
 .hero-section {
   height: 100vh;
   display: grid;
@@ -20,91 +30,114 @@
 
 .hero-move {
   display: grid;
-  gap: clamp(20px, 4vh, 32px);
+  gap: clamp(16px, 3vh, 24px);
 }
 
 .hero-title {
   margin: 0;
-  font-weight: 600;
-  line-height: 0.95;
-  font-size: clamp(4.5rem, 18vh, 11.5rem);
-  color: #2b1b14;
-  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+  font-weight: 400;
+  line-height: 1.1;
+  font-size: clamp(4rem, 15vh, 9rem);
+  color: var(--color-primary);
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6),
+    -1px -1px 1px rgba(74, 59, 50, 0.1);
+
+  opacity: 1;
 }
 
 .hero-desc {
-  font-size: clamp(1.8rem, 5vh, 3.4rem);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 2vh, 1.2rem);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   max-width: 42ch;
   margin-inline: auto;
-  color: #5b4a3c;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  color: var(--color-text-light);
+  text-shadow: none;
+  margin-bottom: 12px;
 }
 
 .hero-cta-wrap {
   display: flex;
   justify-content: center;
+  margin-top: 16px;
 }
 
 .hero-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: clamp(1.4rem, 1.2rem + 1.2vmin, 2.2rem);
-  line-height: 1.05;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  padding: clamp(14px, 2.8vh, 22px) clamp(22px, 5vw, 40px);
-  border-radius: 16px;
-  min-height: 56px;
-  min-inline-size: 180px;
-  max-width: 520px;
-  color: #3a2419;
-  background: linear-gradient(90deg, #f6d365, #fda085);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-  border: none;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 1.5vh, 1.1rem);
+  padding: 20px 42px;
+  border-radius: 50px;
+  min-inline-size: 200px;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  box-shadow: 0 20px 40px -10px rgba(142, 91, 80, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+}
+
+.hero-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shine 6s infinite;
+}
+
+@keyframes shine {
+  0%,
+  80% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
 }
 
 .hero-cta:hover,
 .hero-cta:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.32);
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px -12px rgba(142, 91, 80, 0.5);
+  filter: brightness(1.05);
   outline: none;
 }
 
 .hero-cta:active {
-  transform: translateY(0);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px -5px rgba(142, 91, 80, 0.4);
 }
-
-@media (max-width: 428px), (min-height: 932px) {
-  .hero-inner {
-    gap: clamp(14px, 3vh, 22px);
-    padding-block: clamp(12px, 3vh, 24px);
-  }
-
-  .hero-move {
-    gap: clamp(12px, 2.6vh, 20px);
-  }
-
+@media (max-width: 428px) {
   .hero-title {
-    font-size: clamp(2.8rem, 11vh, 7.2rem);
-    padding-bottom: 0.8rem;
-  }
-
-  .hero-desc {
-    font-size: clamp(1.2rem, 3.8vh, 2.4rem);
+    font-size: clamp(3.5rem, 12vh, 5.5rem);
+    padding-bottom: 0.5rem;
   }
 
   .hero-cta {
-    width: 80%;
-    max-width: 100%;
-    min-inline-size: auto;
-    padding: 18px 20px;
-    font-size: 1.7rem;
+    width: 85%;
+    padding: 18px 24px;
   }
 }
