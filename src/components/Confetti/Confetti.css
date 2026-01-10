@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 9999; /* Deve ficar acima de tudo para dar o efeito de cair na frente */
   display: block;
   background: transparent;
 }

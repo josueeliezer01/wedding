@@ -5,11 +5,19 @@ import Curtain from "./components/Curtain/Curtain.jsx";
 
 const App = () => {
   const [revealed, setRevealed] = useState(false);
+  const [showCurtain, setShowCurtain] = useState(true);
 
   return (
     <>
       <Cursor />
-      {!revealed && <Curtain onComplete={() => setRevealed(true)} />}
+      {showCurtain && (
+        <Curtain
+          onComplete={() => {
+            setRevealed(true);
+            setTimeout(() => setShowCurtain(false), 2000);
+          }}
+        />
+      )}
       <Hero revealed={revealed} />
     </>
   );

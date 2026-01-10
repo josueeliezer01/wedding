@@ -43,42 +43,50 @@ export default function Hero({ revealed = false }) {
   const baseY = useMotionValue(0);
 
   const smoothX = useSpring(baseX, {
-    stiffness: 120,
-    damping: 22,
-    mass: 0.9,
+    stiffness: 80, // Menor rigidez = movimento mais fluido
+    damping: 25, // Mais amortecimento para evitar tremores
+    mass: 1.2, // Um pouco mais de "peso" visual
   });
 
   const smoothY = useSpring(baseY, {
-    stiffness: 120,
-    damping: 22,
-    mass: 0.9,
+    stiffness: 80,
+    damping: 25,
+    mass: 1.2,
   });
 
-  const rotateX = useTransform(smoothY, [-100, 100], [10, -10]);
-  const rotateY = useTransform(smoothX, [-100, 100], [-10, 10]);
+  // Altere os valores de saída (o segundo array) nos seus useTransform:
 
+  // AUMENTADO: De 10 para 20 graus de rotação
+  const rotateX = useTransform(smoothY, [-100, 100], [20, -20]);
+  const rotateY = useTransform(smoothX, [-100, 100], [-20, 20]);
+
+  // AUMENTADO: De 12/18 para 40/60 pixels de deslocamento lateral
   const translateX = useTransform(
     smoothX,
     [-100, 100],
-    isMobile ? [-18, 18] : [-12, 12]
+    isMobile ? [-20, 20] : [-20, 20]
   );
 
   const translateY = useTransform(
     smoothY,
     [-100, 100],
-    isMobile ? [-18, 18] : [-12, 12]
+    isMobile ? [-20, 20] : [-20, 20]
   );
 
   const rafRef = useRef(null);
 
+  // Dentro do seu Hero.jsx, encontre o useEffect da animação:
+
   useEffect(() => {
     if (reduceMotion) return;
 
-    const amplitude = isMobile ? 36 : 22;
-    const freqA = 0.0007;
-    const freqB = 0.001;
+    // AUMENTADO: De 22/36 para 60/80 para ser bem perceptível
+    const amplitude = isMobile ? 60 : 80;
+    const freqA = 0.0005; // Um pouco mais lento para ser elegante
+    const freqB = 0.0007;
 
     const tick = (time) => {
+      // Math.sin e Math.cos agora terão um alcance muito maior
       baseX.set(Math.sin(time * freqA) * amplitude);
       baseY.set(Math.cos(time * freqB) * amplitude);
       rafRef.current = requestAnimationFrame(tick);
