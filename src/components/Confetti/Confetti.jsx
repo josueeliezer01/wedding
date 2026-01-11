@@ -18,14 +18,7 @@ export default function Confetti({
   const mountedRef = useRef(false);
   const reduce = useReducedMotion();
 
-  // --- SOFISTICAÇÃO: Paleta de cores de casamento ---
-  const colors = [
-    "#D4AF37", // Ouro Clássico
-    "#F2D27F", // Ouro Pálido / Champanhe
-    "#AA8C49", // Ouro Antigo
-    "#E5E4E2", // Platina / Prata
-    "#FFFFFF", // Branco Perolado
-  ];
+  const colors = ["#D4AF37", "#F2D27F", "#AA8C49", "#E5E4E2", "#FFFFFF"];
 
   const random = (min, max) => Math.random() * (max - min) + min;
 
@@ -59,8 +52,6 @@ export default function Confetti({
 
       for (let i = 0; i < count; i++) {
         const ang = -Math.PI / 2 + bias + random(-spread / 4, spread / 4);
-
-        // --- ANIMAÇÃO ORIGINAL: Mantida a física exata ---
         const speed = random(16, 28);
         const size = random(6, 14);
         const rotate = random(0, Math.PI * 2);
@@ -73,16 +64,14 @@ export default function Confetti({
           vy: Math.sin(ang) * speed,
           size,
           color: colors[Math.floor(Math.random() * colors.length)],
-          // --- SOFISTICAÇÃO: Apenas retângulos (tiras metálicas) ---
           shape: "rect",
           rotate,
           rotateSpeed,
-          ttl: random(duration * 1.5, duration * 2.0), // Aumentado levemente para garantir a queda até o fim
+          ttl: random(duration * 1.5, duration * 2.0),
           age: 0,
           drag: random(0.992, 0.996),
           gravity: random(0.06, 0.14),
           opacity: 1,
-          // Efeito de balanço suave
           wobble: random(0, Math.PI * 2),
           wobbleSpeed: random(0.02, 0.05),
         });
@@ -104,18 +93,15 @@ export default function Confetti({
         p.vx *= p.drag;
         p.vy *= p.drag;
         p.vy += p.gravity * dtFactor;
-
-        // --- SOFISTICAÇÃO: Wobble para parecer papel real caindo ---
         p.wobble += p.wobbleSpeed * dtFactor;
-        const wobbleX = Math.sin(p.wobble) * 0.8;
 
+        const wobbleX = Math.sin(p.wobble) * 0.8;
         p.x += (p.vx + wobbleX) * dtFactor;
         p.y += p.vy * dtFactor;
         p.rotate += p.rotateSpeed * dtFactor;
         p.age += dt;
 
         const lifeRatio = p.age / p.ttl;
-        // Fade out mais suave apenas no finalzinho da vida
         if (lifeRatio > 0.9)
           p.opacity = Math.max(0, 1 - (lifeRatio - 0.9) / 0.1);
 
@@ -123,10 +109,7 @@ export default function Confetti({
         ctx.globalAlpha = p.opacity;
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rotate);
-
-        // --- SOFISTICAÇÃO: Tiras de papel metálico ---
         ctx.fillStyle = p.color;
-        // Retângulos com proporção de "fita" (mais finos)
         ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2.5);
 
         ctx.restore();
