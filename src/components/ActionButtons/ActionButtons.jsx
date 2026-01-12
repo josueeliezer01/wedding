@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { FiCalendar, FiGift, FiClock } from "react-icons/fi";
+import { FiCalendar, FiGift, FiClock, FiMapPin } from "react-icons/fi";
 import "./ActionButtons.css";
 
 export default function ActionButtons({
   onOpenGiftList,
   onOpenCountdown,
+  onOpenMap,
   reduceMotion,
 }) {
   const handleAddToCalendar = () => {
@@ -68,6 +69,15 @@ END:VCALENDAR`;
           whileTap={{ scale: 0.9 }}
           aria-label="Ver Contagem Regressiva">
           <FiClock />
+        </motion.button>
+
+        <motion.button
+          className="hero-icon-btn"
+          style={{ animationDelay: "0.4s" }}
+          onClick={onOpenMap}
+          whileTap={{ scale: 0.9 }}
+          aria-label="Ver Localização">
+          <FiMapPin />
         </motion.button>
 
         <motion.button

@@ -11,6 +11,7 @@ import Confetti from "../Confetti/Confetti";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import GiftModal from "../GiftModal/GiftModal";
 import CountdownModal from "../CountdownModal/CountdownModal";
+import MapModal from "../MapModal/MapModal";
 import "./Hero.css";
 
 const containerVariants = {
@@ -30,6 +31,7 @@ const containerVariants = {
 export default function Hero({ revealed = false }) {
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showCountdownModal, setShowCountdownModal] = useState(false);
+  const [showMapModal, setShowMapModal] = useState(false);
   const reduceMotion = useReducedMotion();
   const shouldAnimate = revealed && !reduceMotion;
 
@@ -120,6 +122,7 @@ export default function Hero({ revealed = false }) {
           reduceMotion={reduceMotion}
           onOpenGiftList={() => setShowGiftModal(true)}
           onOpenCountdown={() => setShowCountdownModal(true)}
+          onOpenMap={() => setShowMapModal(true)}
         />
       </motion.div>
 
@@ -131,6 +134,11 @@ export default function Hero({ revealed = false }) {
       <CountdownModal
         isOpen={showCountdownModal}
         onClose={() => setShowCountdownModal(false)}
+      />
+
+      <MapModal
+        isOpen={showMapModal}
+        onClose={() => setShowMapModal(false)}
       />
 
       <Confetti

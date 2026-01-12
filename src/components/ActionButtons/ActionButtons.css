@@ -65,7 +65,7 @@
 .hero-secondary-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 .hero-icon-btn {
