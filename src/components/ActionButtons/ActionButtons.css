@@ -1,0 +1,126 @@
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(0.9rem, 1.5vh, 1rem);
+  padding: 18px 42px;
+  border-radius: 50px;
+  min-inline-size: 200px;
+  color: #fff;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  box-shadow: 0 20px 40px -10px rgba(142, 91, 80, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shine 5s infinite;
+}
+
+@keyframes shine {
+  0%,
+  30% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+.hero-secondary-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-icon-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  color: var(--color-primary);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(142, 91, 80, 0.1);
+  transition: all 0.1s ease;
+  animation: icon-pulse 3s infinite ease-in-out;
+}
+
+@keyframes icon-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 8px 32px 0 rgba(142, 91, 80, 0.1);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px 2px rgba(212, 175, 55, 0.4);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 8px 32px 0 rgba(142, 91, 80, 0.1);
+  }
+}
+
+.hero-icon-btn:hover {
+  animation-play-state: paused;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+}
+
+.hero-cta.primary {
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (max-width: 428px) {
+  .hero-secondary-buttons {
+    gap: 25px;
+  }
+  .hero-icon-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
