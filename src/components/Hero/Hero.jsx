@@ -10,6 +10,7 @@ import HeroBackground from "../HeroBackground/HeroBackground";
 import Confetti from "../Confetti/Confetti";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import GiftModal from "../GiftModal/GiftModal";
+import CountdownModal from "../CountdownModal/CountdownModal";
 import "./Hero.css";
 
 const containerVariants = {
@@ -28,6 +29,7 @@ const containerVariants = {
 
 export default function Hero({ revealed = false }) {
   const [showGiftModal, setShowGiftModal] = useState(false);
+  const [showCountdownModal, setShowCountdownModal] = useState(false);
   const reduceMotion = useReducedMotion();
   const shouldAnimate = revealed && !reduceMotion;
 
@@ -38,12 +40,10 @@ export default function Hero({ revealed = false }) {
     typeof window !== "undefined" &&
     window.matchMedia("(pointer: coarse)").matches;
 
-  // --- Lógica de Movimento (Parallax/Tilt) ---
   const baseX = useMotionValue(0);
   const baseY = useMotionValue(0);
   const smoothX = useSpring(baseX, { stiffness: 80, damping: 25, mass: 1.2 });
   const smoothY = useSpring(baseY, { stiffness: 80, damping: 25, mass: 1.2 });
-
   const rotateX = useTransform(smoothY, [-100, 100], [20, -20]);
   const rotateY = useTransform(smoothX, [-100, 100], [-20, 20]);
   const translateX = useTransform(smoothX, [-100, 100], [-20, 20]);
@@ -104,8 +104,8 @@ export default function Hero({ revealed = false }) {
           </p>
           <div className="hero-details">
             <div className="detail-item">
-              <span className="detail-label">Sábado</span>
-              <span className="detail-value">20 Setembro 2025</span>
+              <span className="detail-label">Domingo</span>
+              <span className="detail-value">20 Setembro 2026</span>
             </div>
             <div className="detail-divider" />
             <div className="detail-item">
@@ -119,12 +119,18 @@ export default function Hero({ revealed = false }) {
         <ActionButtons
           reduceMotion={reduceMotion}
           onOpenGiftList={() => setShowGiftModal(true)}
+          onOpenCountdown={() => setShowCountdownModal(true)}
         />
       </motion.div>
 
       <GiftModal
         isOpen={showGiftModal}
         onClose={() => setShowGiftModal(false)}
+      />
+
+      <CountdownModal
+        isOpen={showCountdownModal}
+        onClose={() => setShowCountdownModal(false)}
       />
 
       <Confetti

@@ -1,0 +1,12 @@
+.countdown-modal {
+  max-width: 450px;
+  background: linear-gradient(to bottom, #ffffff, #fff9f8);
+}
+
+.modal-icon-header {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
