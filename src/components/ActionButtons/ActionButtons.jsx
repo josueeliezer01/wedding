@@ -42,6 +42,15 @@ END:VCALENDAR`;
     document.body.removeChild(link);
   };
 
+  const handleMouseMove = (e) => {
+    const { currentTarget, clientX, clientY } = e;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    const x = clientX - left;
+    const y = clientY - top;
+    currentTarget.style.setProperty("--mouse-x", `${x}px`);
+    currentTarget.style.setProperty("--mouse-y", `${y}px`);
+  };
+
   return (
     <div className="hero-actions">
       <motion.button
@@ -54,7 +63,8 @@ END:VCALENDAR`;
 
       <div className="hero-secondary-buttons">
         <motion.button
-          className="hero-icon-btn"
+          className="hero-icon-btn glass-dynamic"
+          onMouseMove={handleMouseMove}
           onClick={handleAddToCalendar}
           whileTap={{ scale: 0.9 }}
           aria-label="Salvar no Calendário">
@@ -62,7 +72,8 @@ END:VCALENDAR`;
         </motion.button>
 
         <motion.button
-          className="hero-icon-btn"
+          className="hero-icon-btn glass-dynamic"
+          onMouseMove={handleMouseMove}
           style={{ animationDelay: "0.2s" }}
           onClick={onOpenCountdown}
           whileTap={{ scale: 0.9 }}
@@ -71,7 +82,8 @@ END:VCALENDAR`;
         </motion.button>
 
         <motion.button
-          className="hero-icon-btn"
+          className="hero-icon-btn glass-dynamic"
+          onMouseMove={handleMouseMove}
           style={{ animationDelay: "0.4s" }}
           onClick={onOpenMap}
           whileTap={{ scale: 0.9 }}
@@ -80,7 +92,8 @@ END:VCALENDAR`;
         </motion.button>
 
         <motion.button
-          className="hero-icon-btn"
+          className="hero-icon-btn glass-dynamic"
+          onMouseMove={handleMouseMove}
           style={{ animationDelay: "0.5s" }}
           onClick={onOpenGiftList}
           whileTap={{ scale: 0.9 }}

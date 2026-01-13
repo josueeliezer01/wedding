@@ -41,6 +41,14 @@
   align-items: center;
   gap: clamp(10px, 2vh, 20px);
   margin-top: 5px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(9px);
+  padding: 25px;
+  border-radius: 24px;
+  border: 1px solid rgba(142, 91, 80, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  margin-top: 15px; 
 }
 
 .hero-desc {
