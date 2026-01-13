@@ -12,6 +12,7 @@ import ActionButtons from "../ActionButtons/ActionButtons";
 import GiftModal from "../GiftModal/GiftModal";
 import CountdownModal from "../CountdownModal/CountdownModal";
 import MapModal from "../MapModal/MapModal";
+import RSVPModal from "../RSVPModal/RSVPModal";
 import "./Hero.css";
 
 const containerVariants = {
@@ -32,6 +33,7 @@ export default function Hero({ revealed = false }) {
   const [showGiftModal, setShowGiftModal] = useState(false);
   const [showCountdownModal, setShowCountdownModal] = useState(false);
   const [showMapModal, setShowMapModal] = useState(false);
+  const [showRSVPModal, setShowRSVPModal] = useState(false);
   const reduceMotion = useReducedMotion();
   const shouldAnimate = revealed && !reduceMotion;
 
@@ -120,11 +122,17 @@ export default function Hero({ revealed = false }) {
 
         <ActionButtons
           reduceMotion={reduceMotion}
+          onOpenRSVP={() => setShowRSVPModal(true)}
           onOpenGiftList={() => setShowGiftModal(true)}
           onOpenCountdown={() => setShowCountdownModal(true)}
           onOpenMap={() => setShowMapModal(true)}
         />
       </motion.div>
+
+      <RSVPModal
+        isOpen={showRSVPModal}
+        onClose={() => setShowRSVPModal(false)}
+      />
 
       <GiftModal
         isOpen={showGiftModal}

@@ -6,6 +6,7 @@ export default function ActionButtons({
   onOpenGiftList,
   onOpenCountdown,
   onOpenMap,
+  onOpenRSVP,
   reduceMotion,
 }) {
   const handleAddToCalendar = () => {
@@ -43,15 +44,13 @@ END:VCALENDAR`;
 
   return (
     <div className="hero-actions">
-      <motion.a
-        href="https://wa.me/351915907925?text=Olá! Gostaria de confirmar minha presença no casamento de Josué e Gabrielly."
-        target="_blank"
-        rel="noopener noreferrer"
+      <motion.button
+        onClick={onOpenRSVP}
         className="hero-cta primary"
         whileHover={reduceMotion ? undefined : { scale: 1.02 }}
         whileTap={reduceMotion ? undefined : { scale: 0.98 }}>
         Confirmar Presença
-      </motion.a>
+      </motion.button>
 
       <div className="hero-secondary-buttons">
         <motion.button
