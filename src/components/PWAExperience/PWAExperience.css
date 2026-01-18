@@ -1,0 +1,102 @@
+.pwa-scroll-wrapper {
+  width: 100%;
+  height: 100vh;
+  background: #fdfcf8;
+  position: relative;
+  margin-top: 0;
+}
+
+.sticky-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  will-change: transform;
+}
+
+.column__item {
+  flex: 0 0 35vh;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  background-color: #f3f3f3;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  aspect-ratio: 2 / 3;
+}
+
+.install-card-item {
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid var(--color-primary);
+  aspect-ratio: auto !important;
+  flex: 0 0 auto !important;
+  min-height: 180px;
+}
+
+.install-card-content h3 {
+  font-family: var(--font-serif);
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin: 5px 0 10px 0;
+}
+
+.install-label {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-text-light);
+}
+
+.compact-btn {
+  padding: 10px 20px !important;
+  font-size: 0.75rem !important;
+  min-inline-size: auto !important;
+  width: auto !important;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .columns {
+    gap: 5px;
+    padding: 8px;
+  }
+
+  .column__item {
+    flex: 0 0 15vh;
+    border-radius: 8px;
+  }
+
+  .install-card-item {
+    padding: 10px;
+    min-height: 140px;
+  }
+
+  .install-card-content h3 {
+    font-size: 1.3rem;
+  }
+}

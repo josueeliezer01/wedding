@@ -1,0 +1,12 @@
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fdfcf8;
+}
+
+.main-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

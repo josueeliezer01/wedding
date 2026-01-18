@@ -78,8 +78,10 @@ export default function Hero({ revealed = false }) {
         animate={shouldAnimate ? "visible" : false}
         onAnimationComplete={() => {
           if (shouldAnimate) {
-            setConfettiStart(true);
-            setTimeout(() => setConfettiStart(false), confettiDuration + 800);
+            setTimeout(() => {
+              setConfettiStart(true);
+              setTimeout(() => setConfettiStart(false), confettiDuration + 800);
+            }, 150);
           }
         }}>
         <motion.div

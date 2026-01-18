@@ -2,6 +2,8 @@ import { useRef, useEffect } from "react";
 import { useReducedMotion } from "framer-motion";
 import "./Confetti.css";
 
+const COLORS = ["#D4AF37", "#F2D27F", "#AA8C49", "#E5E4E2", "#FFFFFF"];
+
 export default function Confetti({
   start = false,
   duration = 4500,
@@ -10,15 +12,12 @@ export default function Confetti({
   const canvasRef = useRef(null);
   const rafRef = useRef(null);
   const intervalRef = useRef(null);
-
   const ctxRef = useRef(null);
   const DPRRef = useRef(1);
   const particlesRef = useRef([]);
   const runningRef = useRef(false);
   const mountedRef = useRef(false);
   const reduce = useReducedMotion();
-
-  const colors = ["#D4AF37", "#F2D27F", "#AA8C49", "#E5E4E2", "#FFFFFF"];
 
   const random = (min, max) => Math.random() * (max - min) + min;
 
@@ -34,19 +33,30 @@ export default function Confetti({
     mountedRef.current = true;
 
     const resize = () => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
       DPRRef.current = Math.max(1, window.devicePixelRatio || 1);
-      canvas.width = Math.floor(canvas.clientWidth * DPRRef.current);
-      canvas.height = Math.floor(canvas.clientHeight * DPRRef.current);
-      ctx.setTransform(DPRRef.current, 0, 0, DPRRef.current, 0, 0);
+      const rect = canvas.getBoundingClientRect();
+
+      canvas.width = rect.width * DPRRef.current;
+      canvas.height = rect.height * DPRRef.current;
+
+      if (ctxRef.current) {
+        ctxRef.current.setTransform(DPRRef.current, 0, 0, DPRRef.current, 0, 0);
+      }
     };
     resize();
     window.addEventListener("resize", resize);
 
     function createBurst(fromLeft = true, count = 30) {
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      const baseX = fromLeft ? 8 : w - 8;
-      const baseY = h - 8;
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
+      const w = canvas.offsetWidth || window.innerWidth;
+      const h = canvas.offsetHeight || window.innerHeight;
+      const baseX = fromLeft ? 20 : w - 20;
+      const baseY = h - 10;
       const spread = Math.PI * 0.45;
       const bias = fromLeft ? 0.18 : -0.18;
 
@@ -63,7 +73,7 @@ export default function Confetti({
           vx: Math.cos(ang) * speed,
           vy: Math.sin(ang) * speed,
           size,
-          color: colors[Math.floor(Math.random() * colors.length)],
+          color: COLORS[Math.floor(Math.random() * COLORS.length)],
           shape: "rect",
           rotate,
           rotateSpeed,
@@ -133,6 +143,7 @@ export default function Confetti({
 
     function startRunLocal() {
       if (runningRef.current) return;
+      resize();
       runningRef.current = true;
       lastTime = performance.now();
 

@@ -1,0 +1,46 @@
+.scroll-indicator {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 100;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.custom-arrow-svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--color-primary);
+}
+
+.arrow-wrapper {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: arrow-bounce 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.2));
+}
+
+.scroll-text {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-primary);
+  opacity: 0.8;
+}
+
+@keyframes arrow-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
