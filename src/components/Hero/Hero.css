@@ -6,8 +6,8 @@
   align-items: center;
   padding: clamp(30px, 5vh, 60px) 20px;
   position: relative;
-  overflow-x: hidden;
-  perspective: 1200px;
+  overflow: visible !important;
+  perspective: 2000px;
 }
 
 .hero-inner {
@@ -21,6 +21,12 @@
   z-index: 10;
   gap: clamp(10px, 2vh, 25px);
   position: relative;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: visible !important;
+  will-change: transform, opacity;
 }
 
 .hero-title {
