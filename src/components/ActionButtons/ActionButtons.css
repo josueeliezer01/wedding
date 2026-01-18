@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: clamp(8px, 1.5vh, 15px);
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .hero-cta {
@@ -33,6 +35,8 @@
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .hero-cta::after {
@@ -156,12 +160,26 @@
   max-width: 280px;
 }
 
-@media (max-width: 428px) {
-  .hero-secondary-buttons {
-    gap: 25px;
+@media (max-height: 786px) {
+  .hero-actions {
+    padding: 0 30px;
   }
+
+  .hero-cta {
+    padding: 14px 35px !important;
+    min-inline-size: auto !important;
+    width: fit-content !important;
+  }
+
   .hero-icon-btn {
-    width: 50px;
-    height: 50px;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 393px) {
+  .hero-secondary-buttons {
+    gap: 12px;
   }
 }
