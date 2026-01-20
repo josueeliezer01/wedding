@@ -18,31 +18,31 @@
 .hero-inner {
   width: 100%;
   max-width: 600px;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   text-align: center;
   z-index: 10;
-  gap: clamp(10px, 2vh, 25px);
+  max-height: 100%;
   position: relative;
-  transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  overflow: visible !important;
   will-change: transform, opacity;
-  padding-bottom: 40px;
+}
+
+.hero-inner > :last-child {
+  margin-top: 1vh;
 }
 
 .hero-title {
   font-weight: 400;
-  line-height: 1.1;
-  font-size: clamp(4rem, 12vh, 7.5rem);
+  line-height: 1;
+  font-size: clamp(3.5rem, 11vh, 7.5rem);
   color: var(--color-primary);
   text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
-  padding: 0 0.2em;
+  padding: 0 0.1em;
   width: 100%;
+  margin: 0;
 }
 
 .hero-content-block {
@@ -50,27 +50,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(10px, 2vh, 20px);
-  margin-top: 5px;
+  gap: clamp(10px, 3vh, 30px);
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 25px;
+  padding: clamp(15px, 4vh, 40px) 20px;
   border-radius: 24px;
   border: 1px solid rgba(142, 91, 80, 0.1);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-  margin-top: 5px;
 }
 
 .hero-desc {
   font-family: var(--font-sans);
   font-weight: 300;
-  font-size: clamp(0.85rem, 2vh, 1.1rem);
+  font-size: clamp(0.75rem, 1.8vh, 1rem);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--color-text-light);
   max-width: 90%;
-  margin: 0 auto;
 }
 
 .hero-details {
@@ -101,9 +98,8 @@
 
 .detail-value {
   font-family: "Rouge Script", cursive;
-  font-size: clamp(1.8rem, 4vh, 2.2rem);
+  font-size: clamp(1.5rem, 4vh, 2.5rem);
   color: var(--color-primary);
-  line-height: 1;
 }
 
 .detail-divider {
@@ -114,26 +110,32 @@
 
 .hero-location {
   font-family: "Rouge Script", cursive;
-  font-size: clamp(1.8rem, 4vh, 2.1rem);
-  color: var(--color-primary);
-  margin-top: 5px;
+  font-size: clamp(1.5rem, 4vh, 2.5rem);
 }
 
-@media (max-height: 786px) {
+@media (max-height: 670px) {
   .hero-inner {
-    gap: 1vh;
+    height: 95%;
+    justify-content: space-between;
+  }
+
+  .hero-inner > :last-child {
+    transform: scale(0.9);
+    margin-top: 5px;
   }
 
   .hero-title {
     font-size: clamp(3rem, 11vh, 5.5rem) !important;
-    line-height: 1;
-    margin-bottom: 1vh;
+    transform: translateY(-2vh);
   }
 
   .hero-content-block {
-    padding: clamp(10px, 2vh, 20px) !important;
-    gap: 1.5vh !important;
-    margin-top: 10px !important;
+    padding: 15px !important;
+    gap: 1vh !important;
+  }
+
+  .detail-divider {
+    height: 30px;
   }
 
   .hero-desc {
@@ -146,8 +148,9 @@
     gap: 10px !important;
   }
 
-  .detail-value {
-    font-size: clamp(1.4rem, 3.5vh, 1.8rem) !important;
+  .detail-value,
+  .hero-location {
+    font-size: 1.4rem !important;
   }
 
   .detail-label {
@@ -156,18 +159,6 @@
   }
 
   .hero-location {
-    font-size: clamp(1.4rem, 3.5vh, 1.8rem) !important;
     margin-top: 0;
-  }
-}
-
-@media (max-height: 600px) {
-  .hero-inner {
-    transform: scale(0.9);
-    transform-origin: center;
-  }
-
-  .hero-title {
-    font-size: 3.2rem !important;
   }
 }

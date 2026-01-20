@@ -50,8 +50,8 @@ export default function Hero({ revealed = false }) {
   const smoothY = useSpring(baseY, { stiffness: 80, damping: 25, mass: 1.2 });
   const rotateX = useTransform(smoothY, [-100, 100], [20, -20]);
   const rotateY = useTransform(smoothX, [-100, 100], [-20, 20]);
-  const translateX = useTransform(smoothX, [-100, 100], [-20, 20]);
-  const translateY = useTransform(smoothY, [-100, 100], [-20, 20]);
+  const translateX = useTransform(smoothX, [-100, 100], [-15, 15]);
+  const translateY = useTransform(smoothY, [-100, 100], [-15, 15]);
 
   const rafRef = useRef(null);
 
@@ -94,7 +94,7 @@ export default function Hero({ revealed = false }) {
                   rotateY,
                   x: translateX,
                   y: translateY,
-                  transformPerspective: 1200,
+                  transformPerspective: 800,
                 }
           }>
           <h1 className="hero-title">
