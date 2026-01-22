@@ -35,18 +35,18 @@ export default function PWAExperience({ revealed, onInstall }) {
     col2: [
       "/assets/gallery/foto7.webp",
       "/assets/gallery/foto8.webp",
-      "/assets/gallery/foto8.webp",
-      isInstalled ? "/assets/gallery/foto14.webp" : "INSTALL_CARD",
       "/assets/gallery/foto9.webp",
+      isInstalled ? "/assets/gallery/foto18.webp" : "INSTALL_CARD",
       "/assets/gallery/foto10.webp",
+      "/assets/gallery/foto11.webp",
     ],
     col3: [
-      "/assets/gallery/foto10.webp",
-      "/assets/gallery/foto11.webp",
-      "/assets/gallery/foto10.webp",
-      "/assets/gallery/foto11.webp",
       "/assets/gallery/foto12.webp",
       "/assets/gallery/foto13.webp",
+      "/assets/gallery/foto14.webp",
+      "/assets/gallery/foto15.webp",
+      "/assets/gallery/foto16.webp",
+      "/assets/gallery/foto17.webp",
     ],
   };
 
@@ -93,7 +93,7 @@ export default function PWAExperience({ revealed, onInstall }) {
                     className="column__item"
                     style={{ backgroundImage: `url(${item})` }}
                   />
-                )
+                ),
               )}
             </motion.div>
 

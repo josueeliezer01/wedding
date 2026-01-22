@@ -6,7 +6,6 @@ import {
   useSpring,
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import HeroBackground from "../HeroBackground/HeroBackground";
 import Confetti from "../Confetti/Confetti";
 import ActionButtons from "../ActionButtons/ActionButtons";
 import GiftModal from "../GiftModal/GiftModal";
@@ -69,7 +68,8 @@ export default function Hero({ revealed = false }) {
 
   return (
     <section className="hero-section">
-      <HeroBackground />
+      <div className="hero-bg__spot hero-bg__spot--left" />
+      <div className="hero-bg__spot hero-bg__spot--right" />
 
       <motion.div
         className="hero-inner"

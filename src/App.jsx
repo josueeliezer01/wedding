@@ -7,13 +7,16 @@ import {
 import InvitationPage from "./components/InvitationPage/InvitationPage";
 import AdminRSVP from "./components/AdminRSVP/AdminRSVP";
 import Cursor from "./components/Cursor/Cursor";
+import HeroBackground from "./components/HeroBackground/HeroBackground";
 import "./App.css";
 
 const App = () => {
   return (
     <Router>
-      <div>
+      <div className="app-root">
         <Cursor />
+        <HeroBackground />
+
         <Routes>
           <Route
             path="/"

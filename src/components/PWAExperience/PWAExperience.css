@@ -3,7 +3,8 @@
   height: 100vh;
   background: #fdfcf8;
   position: relative;
-  margin-top: 0;
+  z-index: 1;
+  background: transparent;
 }
 
 .sticky-container {
@@ -20,9 +21,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  width: 100%;
+  width: 700px;
   height: auto;
   padding: 20px;
+  margin: 0 auto;
   align-items: center;
 }
 
@@ -42,6 +44,7 @@
   background-color: #f3f3f3;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   aspect-ratio: 2 / 3;
+  transition: transform 0.25s ease;
 }
 
 .install-card-item {

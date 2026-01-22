@@ -3,11 +3,8 @@ import "./HeroBackground.css";
 export default function HeroBackground() {
   return (
     <div
-      className="hero-bg"
+      className="global-bg"
       aria-hidden="true">
-      <div className="hero-bg__spot hero-bg__spot--left" />
-      <div className="hero-bg__spot hero-bg__spot--right" />
-
       <svg className="hero-svg-canvas">
         <defs>
           <pattern
@@ -48,7 +45,6 @@ export default function HeroBackground() {
             </g>
           </pattern>
         </defs>
-
         <rect
           className="hero-pattern-rect"
           x="-50%"

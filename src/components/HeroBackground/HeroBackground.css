@@ -1,12 +1,10 @@
-.hero-bg {
-  position: absolute;
+.global-bg {
+  position: fixed;
   inset: 0;
   z-index: 0;
   background-color: #fdfcf8;
   overflow: hidden;
   pointer-events: none;
-  isolation: isolate;
-  animation: bgFadeIn 2s ease-out forwards;
 }
 
 .hero-svg-canvas {
@@ -14,86 +12,19 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  opacity: 0.7;
 }
 
 .hero-pattern-rect {
-  animation: riceDriftInfinite 15s linear infinite;
+  animation: jgDrift 15s linear infinite;
   will-change: transform;
 }
 
-@keyframes riceDriftInfinite {
+@keyframes jgDrift {
   from {
     transform: translate(0, 0);
   }
   to {
     transform: translate(180px, 180px);
-  }
-}
-
-.hero-bg__spot {
-  position: absolute;
-  z-index: 0;
-  width: clamp(500px, 80vw, 1200px);
-  height: clamp(500px, 80vw, 1200px);
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.7;
-  will-change: transform;
-}
-
-.hero-bg__spot--left {
-  left: -20%;
-  top: -20%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 212, 163, 0.9) 0%,
-    rgba(253, 160, 133, 0.5) 50%,
-    transparent 70%
-  );
-  animation: spotlightLeftMove 10s ease-in-out infinite;
-}
-
-.hero-bg__spot--right {
-  right: -20%;
-  bottom: -20%;
-  background: radial-gradient(
-    circle,
-    rgba(223, 137, 137, 0.9) 0%,
-    rgba(190, 100, 80, 0.5) 50%,
-    transparent 70%
-  );
-  animation: spotlightRightMove 10s ease-in-out infinite;
-}
-
-@keyframes spotlightLeftMove {
-  0%,
-  100% {
-    transform: translate3d(-70vw, 0, 0) scale(0.9);
-  }
-  25% {
-    transform: translate3d(25vw, -15vh, 0) scale(1.15);
-  }
-  50% {
-    transform: translate3d(110vw, -10vh, 0) scale(1.3);
-  }
-  75% {
-    transform: translate3d(65vw, 5vh, 0) scale(1.1);
-  }
-}
-
-@keyframes spotlightRightMove {
-  0%,
-  100% {
-    transform: translate3d(70vw, 0, 0) scale(0.9);
-  }
-  25% {
-    transform: translate3d(-25vw, 15vh, 0) scale(1.15);
-  }
-  50% {
-    transform: translate3d(-110vw, 10vh, 0) scale(1.3);
-  }
-  75% {
-    transform: translate3d(-65vw, -5vh, 0) scale(1.1);
   }
 }
